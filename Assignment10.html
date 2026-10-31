@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Natalee's Last Ride Before Winter</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+</head>
+<body>
+<script>
+var characterX = 250;
+var headY = 250;
+var characterDirection = 1;
+var characterSpeed = 2;
+var bodyX = 250;
+var bodyY = 275;
+var bodyDirection = 1;
+var size = 22;
+var count = 0;
+var sizeDirection = 2;
+var pinkCircleX = 400;
+var pinkCircleY = 400;
+var pinkCircleDirection;
+var redCircleX = 430;
+var redCircleY = 400;
+var redCircleDirection;
+var blueCircleX = 370;
+var blueCircleY = 200;
+var blueCircleDirection = 1;
+function setup()
+{
+createCanvas(500, 600)
+pinkCircleDirection = floor(random(1,5));
+redCircleDirection = floor(random(1,5));
+}
+function draw()
+            {
+                background(00,00,00);
+                strokeWeight(1);
+                characterX += characterSpeed * characterDirection;
+                if(characterX >= 418 || characterX <= 82)
+                {
+                    characterDirection *= -1;
+                }
+
+                //my head
+                fill(255,255,255);
+                circle(characterX, headY, 75);
+
+                //my torso
+                stroke(255,255,255);
+                line(characterX, bodyY, characterX, bodyY + 100);
+
+                //my longboard
+                fill(52,46,37)
+                stroke(00,00,00);
+                ellipse(characterX,410,100,30);
+
+                //my left leg
+                stroke(255,255,255);
+                line(characterX,375,characterX - 25,410);
+
+                //my right leg
+                stroke(255,255,255);
+                line(characterX,375,characterX + 25,410);
+
+                //my arms
+                stroke(255,255,255);
+                line(characterX - 45,315,characterX + 50,315);
+
+                //the left side of my glasses
+                stroke(00,00,00);
+                fill(255,255,255);
+                rect(characterX -30,235,27,20);
+
+                //the right side of my glasses
+                stroke(00,00,00);
+                fill(255,255,255);
+                rect(characterX + 10,235,27,20);
+
+                //my left eye
+                strokeWeight(10);
+                point(characterX - 20,245);
+
+                //my right eye
+                point(characterX + 20,245);
+
+                //longboard left wheel
+                fill(52,46,37);
+                strokeWeight(5);
+                circle(characterX - 35,430,30);
+
+                 //longboard right wheel
+                fill(52,46,37);
+                strokeWeight(5);
+                circle(characterX + 35,430,30);
+
+                //my smile
+                noFill();
+                stroke(00,00,00);
+                strokeWeight(2);
+                arc(characterX,260,40,20,0,PI);
+
+                //my helmet
+                fill(163,44,196);
+                strokeWeight(1);
+                triangle(characterX - 50,230,characterX,202,characterX + 50,230);
+
+                //extra circle pink
+                fill(255,105,180);
+                strokeWeight(5);
+                circle(pinkCircleX, pinkCircleY,30);
+                 pinkCircleY += pinkCircleDirection;
+                if (pinkCircleY >= 460 || pinkCircleY <= 40)
+            {
+                pinkCircleDirection *= -1;
+            }
+                
+                //extra circle red
+                fill(255,0,0);
+                strokeWeight(5);
+                circle(redCircleX, redCircleY,30);
+                redCircleY += redCircleDirection;
+                if (redCircleY >=460 || redCircleY <= 40)
+            {
+                redCircleDirection *= -1;
+            }
+                
+                //extra circle blue
+                fill(0,0,255);
+                strokeWeight(5);
+                circle(blueCircleX,blueCircleY,30);
+                blueCircleX += blueCircleDirection;
+                blueCircleY += blueCircleDirection;
+                if(blueCircleX >=460 || blueCircleX <= 40 || blueCircleY >=300 || blueCircleY <=40)
+            {
+                blueCircleDirection *= -1;
+            }
+
+                fill(163,44,196);
+                textSize(24);
+                text('Last Ride Before Winter',135,100);
+                
+                
+                 textSize(size);
+                size += sizeDirection;
+                count++;
+                if(count > 5)
+            {
+                sizeDirection *= -1;
+                count = 0;
+            }
+                text('by Natalee Justus', 125,550);
+
+            }
+</script>
+</body>
+</html>
